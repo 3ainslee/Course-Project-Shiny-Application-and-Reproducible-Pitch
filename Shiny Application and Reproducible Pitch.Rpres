@@ -1,0 +1,55 @@
+Shiny Application and Reproducible Pitch
+========================================================
+author: 
+date: 
+autosize: true
+
+Summary Slide
+========================================================
+
+What we should expect in the upcoming slides
+
+- Summary of the Data
+- Plot of the Outliers
+- Plot of the data
+- Linear Model
+
+Slide With Code
+========================================================
+
+```{r}
+summary(cars)
+head(cars)
+par(mfrow=c(1, 2))  
+boxplot(cars$speed, main="Speed", sub=paste("Outlier rows: ", boxplot.stats(cars$speed)$out))
+```
+
+
+Slide With Outliers
+========================================================
+
+```{r, echo=FALSE}
+par(mfrow=c(1, 2))  
+boxplot(cars$speed, main="Speed", sub=paste("Outlier rows: ", boxplot.stats(cars$speed)$out))
+boxplot(cars$dist, main="Distance", sub=paste("Outlier rows: ", boxplot.stats(cars$dist)$out))
+```
+
+
+Slide With Plot
+========================================================
+
+```{r, echo=FALSE}
+plot(cars)
+scatter.smooth(x=cars$speed, y=cars$dist, main="Dist ~ Speed")
+```
+
+Slide With Linear Model
+========================================================
+
+```{r, echo=FALSE}
+cor <- cor(cars$speed, cars$dist)
+linearMod <- lm(dist ~ speed, data=cars) 
+print(linearMod)
+print("The correlation is: ")
+print(cor)
+```
